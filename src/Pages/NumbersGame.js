@@ -1,7 +1,8 @@
+import userEvent from '@testing-library/user-event'
 import React, { useRef, useState } from 'react'
 import "./NumbersGame"
 
-function NumbersGame() {
+function NumbersGame(props) {
     const [started, setStarted] = useState()
     const [character, setCharacter] = useState()
     const [counts, setCounts] = useState({correct: 0, notCorrect: 0})
@@ -12,45 +13,52 @@ function NumbersGame() {
     const characterArray = "0 1 2 3 4 5 6 7 8 9 a b c d e f g h i j k l m n o p q r s t u v w x y z".split(" ")            
     // could have noun action place for each one
     const wordMap = {
-      0: "h hero",
-      1: "a apron",
-      2: "2 boots",
-      3: "c coffee",
-      4: "d door",
-      5: "e eve",
-      6: "f flicks",
-      7: "g getin",
-      8: "h hydrate",
-      9: "i incline",
-      a: "1 apron",
-      b: "2 boots",
-      c: "3 coffee",
-      d: "4 door",
-      e: "5 eve",
-      f: "6 flicks",
-      g: "7 getin",
-      h: "8 hydrate",
-      i: "9 incline",
-      j: "10 justthen",
-      k: "11 kitchen",
-      l: "12 lshelf",
-      m: "13 marine",
-      n: "14 nicotine",
-      o: "15 overseen",
-      p: "16 protein",
-      q: "17 queen",
-      r: "18 routine",
-      s: "19 screen",
-      t: "20 tea",
-      u: "21 upon",
-      v: "22 venue",
-      w: "23 wintery",
-      x: "24 xor",
-      y: "25 ydive",
-      z: "26 zulu"
-    }
-    console.log(wordMap["a"])
+        0: "hero h",
+        1: "apron a",
+        2: "boots 2",
+        3: "coffee c",
+        4: "door d",
+        5: "eve e",
+        6: "flicks f",
+        7: "getin g",
+        8: "hydrate h",
+        9: "incline i",
+        a: "apron 1",
+        b: "boots 2",
+        c: "coffee 3",
+        d: "door 4",
+        e: "eve 5",
+        f: "flicks 6",
+        g: "getin 7",
+        h: "hydrate 8",
+        i: "incline 9",
+        j: "justthen 10",
+        k: "kitchen 11",
+        l: "lshelf 12",
+        m: "marine 13",
+        n: "nicotine 14",
+        o: "overseen 15",
+        p: "protein 16",
+        q: "queen 17",
+        r: "routine 18",
+        s: "screen 19",
+        t: "tea 20",
+        u: "upon 21",
+        v: "venue 22",
+        w: "wintery 23",
+        x: "xor 24",
+        y: "ydive 25",
+        z: "zulu 26",
+    }    
 
+    // A dev function that was used to adjust the map once
+    //swap()
+    function swap(){
+        var tempString = ""
+        for(var index in wordMap)
+            tempString += index +': "'+wordMap[index].split(" ")[1]+" "+wordMap[index].split(" ")[0]+'",\n'
+        console.log(tempString)
+    }
 
     // Set the state to show the game and choose the first character
     function startGame(){
@@ -70,17 +78,14 @@ function NumbersGame() {
     }
     // Check the input to see if it matches the key value pair
     function checkInput(_input){
-
-      console.log("======================")
-      console.log("checkign "+_input)
-      console.log(_input.toLowerCase()+" === "+"keyValue ".toLowerCase()+(_input.toLowerCase().trim() === "keyValue".toLowerCase().trim()))
-      if(_input.toLowerCase().trim() === wordMap[character]){
-        console.log("correct")
+      
+      if(_input.toLowerCase().trim() === wordMap[character]){        
         setCorect(true)
         setCounts({correct: counts.correct + 1, notCorrect: counts.notCorrect})
+        showBox()
       }
       else{
-        console.log("not correct")
+        console.log("input: " + _input + " correct: " + wordMap[character])
         setCorect(false)
         setCounts({correct: counts.correct, notCorrect: counts.notCorrect + 1})
       }
@@ -91,10 +96,30 @@ function NumbersGame() {
       setKeyLog(" | " + character + " : " + wordMap[character] + " | " + keyLog)
     }
 
+    const postCounter = useRef(1)
+    const boxRef = useRef()
+    function showBox(){
+
+        boxRef.current.classList.remove("fade")
+        
+        setTimeout(() => {
+
+            boxRef.current.classList.add("fade")
+            
+        }, 1000);
+    }    
+  console.log(props.postArray[2]?.data?.preview?.images[0])
   return (
-    <div>
+    <div className='numberGameContainer'>
+      <box className="box" ref={boxRef}>        
+        <img src={props.postArray[2]?.data?.preview?.images[0]?.source.url.replaceAll("amp;","")}></img>
+      </box>
       {started ?       
-        <div className='numberGameContainer'>
+        <div className=''>
+          <div className='hintIcon'>
+            <div className='hintIconText'>Hint</div>
+            <div className='hint'>{wordMap[character]}</div>            
+          </div>
           <div className='characterContainer'>
             {character}
           </div>

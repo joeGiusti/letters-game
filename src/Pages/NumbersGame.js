@@ -8,9 +8,13 @@ function NumbersGame(props) {
     const [counts, setCounts] = useState({correct: 0, notCorrect: 0})
     const [correct, setCorect] = useState(true)
     const [keyLog, setKeyLog] = useState([])
-    const inputRef = useRef()
 
+    const inputRef = useRef()
+    const postCounter = useRef(1)
+    const boxRef = useRef()
+    
     const characterArray = "0 1 2 3 4 5 6 7 8 9 a b c d e f g h i j k l m n o p q r s t u v w x y z".split(" ")            
+    
     // could have noun action place for each one
     const wordMap = {
         0: "hero h",
@@ -51,8 +55,7 @@ function NumbersGame(props) {
         z: "zulu 26",
     }    
 
-    // A dev function that was used to adjust the map once
-    //swap()
+    // swap() A dev function that was used to adjust the map once    
     function swap(){
         var tempString = ""
         for(var index in wordMap)
@@ -96,25 +99,46 @@ function NumbersGame(props) {
       setKeyLog(" | " + character + " : " + wordMap[character] + " | " + keyLog)
     }
 
-    const postCounter = useRef(1)
-    const boxRef = useRef()
+    // Removes the class with the animation then re adds it
     function showBox(){
 
+      // Go to the next post
       postCounter.current = postCounter.current + 1
+      
+      // Make sure there is an image for that post
+      while(!props.postArray[postCounter.current]?.data?.preview?.images[0]?.source.url.replaceAll("amp;","") && (postCounter.current < props.postArray.length))
+        postCounter.current = postCounter.current + 1
+      
+      console.log("imageUrl: "+props.postArray[postCounter.current]?.data?.preview?.images[0]?.source.url.replaceAll("amp;",""))
+      console.log("counter: "+postCounter.current)
+      console.log(props.postArray)
 
+      // If there are about to be no more add more
+      if(postCounter.current >= props.postArray.length -1){
+        postCounter.current = 0
+        console.log("last index: " + (props.postArray.length - 1))
+        var lastPost = props.postArray[(props.postArray.length - 1)].kind +
+        "_"+
+        props.postArray[(props.postArray.length - 1)].data.id
+        console.log("created last post string: "+lastPost)
+        props.fetchData(lastPost)
+          
+        
+      }      
+      // Remove the class with the animation
       boxRef.current.classList.remove("fade")
       
       setTimeout(() => {
-
-          boxRef.current.classList.add("fade")
-          
+        // Readd the class with the animatio so it plays again
+          boxRef.current.classList.add("fade")          
       }, 1000);
     }    
-console.log(props.postArray[2]?.data?.preview?.images[0]?.source.url.replaceAll("amp;",""))
+  
   return (
     <div className='numberGameContainer'>
       <box className="box" ref={boxRef}>        
         <img src={props.postArray[postCounter.current]?.data?.preview?.images[0]?.source.url.replaceAll("amp;","")}></img>
+        {/* <img src={props.postArray[postCounter.current]?.data?.thumbnail}></img> */}
       </box>
       {started ?       
         <div className=''>

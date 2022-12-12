@@ -139,7 +139,7 @@
   height: 100%;
 }
 .fade{
-  animation: fadeInAndOut 1s;
+  animation: fadeInAndOut 2s;
 }
 @keyframes fadeInAndOut{
   0% {opacity: 0}

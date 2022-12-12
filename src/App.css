@@ -1,38 +1,97 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: purple;
+  background-image: linear-gradient(rgba(102, 47, 124, 0.678), rgba(128, 0, 128, 0.096), rgba(37, 2, 78, 0.63));  
+  animation: backgroundColorAnimation 10s infinite;
+  text-align: center;  
+  height: 100vh;  
+  box-sizing: border-box;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+@keyframes backgroundColorAnimation {
+  00%{ background-color: purple;}
+  50%{ background-color: rgb(103, 41, 128);}
+  100%{ background-color: purple;}
+}
+.gameContainer{
+  height: 400px;
+  width: 600px;
+  background-color: rgb(68, 60, 73);margin-top: calc(50% - 200px);    
+  border: 1px solid rgb(0, 0, 0);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.384);
+  border-radius: 10px;
+  margin: 0px;
+  box-sizing: border-box;
+  position: relative;
+}
+.startButtonContainer{
+  height: 400px;
+  width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.startButtonContainer button{
+  width: 100px;
+  height: 40px;
+  outline: none;
+  border: none;
+  background-color: rgb(253, 207, 0);
+  border-radius: 3px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+.startButtonContainer button:hover{
+  background-color: rgb(255, 230, 117);
+  box-shadow: 0 0 20px rgb(253, 207, 0);
+}
+.numberGameContainer{
+  padding-top: 60px;
+}
+.characterContainer{
   color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 40px;
 }
-
-.App-link {
-  color: #61dafb;
+.numberGameContainer input{
+  width: 200px;
+  height: 40px;
+  background-color: gray;
+  padding: 0 10px;
+  border: none;
+  outline: none;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.resultsArea{
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+}
+.correctIndicator{
+  display: inline-block;
+  padding: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 5px;
+}
+.correct{
+  border: 1px solid green;
+}
+.notCorrect{
+  border: 1px solid red;
+}
+.keyLog{
+  width: 90%;
+  height: 40px;
+  overflow-y: auto;  
+  margin: auto;
+  padding-top: 10px;
+}
+.keyLog::-webkit-scrollbar{
+  display: none;
 }

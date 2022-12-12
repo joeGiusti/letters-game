@@ -108,7 +108,7 @@ function NumbersGame(props) {
         postCounter.current = postCounter.current + 1            
 
       // If there are about to be no more add more
-      if(postCounter.current >= props.postArray.length -1){
+      if(postCounter.current >= props.postArray.length - 1){
         postCounter.current = 0
         
         var lastPost = props.postArray[(props.postArray.length - 1)].kind +
@@ -123,7 +123,6 @@ function NumbersGame(props) {
 
     // Removes the class with the animation then re adds it
     function showBox(){
-
       
       // Remove the class with the animation
       boxRef.current.classList.remove("fade")
@@ -137,7 +136,7 @@ function NumbersGame(props) {
       // Put the post count up after 3 seconds
       setTimeout(() => {
         postCountUp()
-      }, 3000);
+      }, 2000);
     }    
   
   return (

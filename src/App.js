@@ -19,7 +19,7 @@ function App() {
   function fetchData(_after){
     
     var _sub = "r/gonewild"    
-    fetch("https://www.reddit.com/" + _sub + ".json?limit=2&after="+_after)
+    fetch("https://www.reddit.com/" + _sub + ".json?limit=20&after="+_after)
     .then(res => res.json())
     .then(res2 => {
       setPostArray(res2.data.children)

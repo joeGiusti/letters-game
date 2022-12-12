@@ -45,11 +45,11 @@
 }
 .numberGameContainer{  
   width: 600px;
-  height: 300px;
+  height: 350px;
   position: fixed;
   z-index: 10;
-  margin-left: calc(50% - 300px);;  
-  margin-top: calc(50% - 250px);
+  margin-left: calc(50vw - 300px);;  
+  margin-top: calc(50vh - 250px);
   background-color: rgb(61, 49, 65);
   border-radius: 5px;  
   display: flex;
@@ -62,7 +62,7 @@
   font-size: 20px;
   font-weight: bold;
   padding: 0 20px 40px 20px;
-  margin-top: -20px;
+  margin-top: -120px;
 }
 .numberGameContainer input{
   width: 200px;
@@ -131,16 +131,16 @@
   height: 350px;  
   width: 400px;
   position: absolute;
-  margin: auto;
-  left: calc(50% - 200px);   
+  margin: auto;  
   z-index: -1;     
+  -webkit-mask-image: radial-gradient(rgb(255, 255, 255), rgba(255, 255, 255, 0));
 }
 .box img{
   height: 100%;
   z-index: inherit;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0 0 20px rgba(93, 60, 109, 0.938);  
-  -webkit-mask-image: radial-gradient(rgb(0, 128, 0), rgba(0, 128, 0, 0));
+  -webkit-mask-image: radial-gradient(rgb(255, 255, 255), rgba(255, 255, 255, 0));
 }
 .fade{
   animation: fadeInAndOut 3s;

@@ -99,39 +99,45 @@ function NumbersGame(props) {
       setKeyLog(" | " + character + " : " + wordMap[character] + " | " + keyLog)
     }
 
-    // Removes the class with the animation then re adds it
-    function showBox(){
-
+    function postCountUp(){
       // Go to the next post
       postCounter.current = postCounter.current + 1
-      
+          
       // Make sure there is an image for that post
       while(!props.postArray[postCounter.current]?.data?.preview?.images[0]?.source.url.replaceAll("amp;","") && (postCounter.current < props.postArray.length))
-        postCounter.current = postCounter.current + 1
-      
-      console.log("imageUrl: "+props.postArray[postCounter.current]?.data?.preview?.images[0]?.source.url.replaceAll("amp;",""))
-      console.log("counter: "+postCounter.current)
-      console.log(props.postArray)
+        postCounter.current = postCounter.current + 1            
 
       // If there are about to be no more add more
       if(postCounter.current >= props.postArray.length -1){
         postCounter.current = 0
-        console.log("last index: " + (props.postArray.length - 1))
+        
         var lastPost = props.postArray[(props.postArray.length - 1)].kind +
         "_"+
         props.postArray[(props.postArray.length - 1)].data.id
-        console.log("created last post string: "+lastPost)
+        
         props.fetchData(lastPost)
           
         
       }      
+    }
+
+    // Removes the class with the animation then re adds it
+    function showBox(){
+
+      
       // Remove the class with the animation
       boxRef.current.classList.remove("fade")
       
+      // Add the class back on so the animation plays after a brief pause
       setTimeout(() => {
         // Readd the class with the animatio so it plays again
           boxRef.current.classList.add("fade")          
-      }, 1000);
+      }, 50);
+
+      // Put the post count up after 3 seconds
+      setTimeout(() => {
+        postCountUp()
+      }, 3000);
     }    
   
   return (

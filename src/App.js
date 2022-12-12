@@ -15,14 +15,13 @@ function App() {
     }
   })
 
+  // Fetches data from the subreddit starting after the given post id
   function fetchData(_after){
-    console.log("fetching data after post with id " + _after)
+    
     var _sub = "r/gonewild"    
     fetch("https://www.reddit.com/" + _sub + ".json?limit=2&after="+_after)
     .then(res => res.json())
     .then(res2 => {
-      console.log(res2.data.children)
-      console.log("last post id "+res2.data.children[res2.data.children.length - 1].data.id)
       setPostArray(res2.data.children)
     })
 

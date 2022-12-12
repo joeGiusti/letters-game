@@ -133,13 +133,13 @@
   position: fixed;
   margin: auto;
   top: 30px;
-  left: calc(50% - 200px);    
+  left: calc(50% - 200px);      
 }
 .box img{
   height: 100%;
 }
 .fade{
-  animation: fadeInAndOut 2s;
+  animation: fadeInAndOut 3s;
 }
 @keyframes fadeInAndOut{
   0% {opacity: 0}

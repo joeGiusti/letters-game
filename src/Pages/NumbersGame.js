@@ -100,19 +100,21 @@ function NumbersGame(props) {
     const boxRef = useRef()
     function showBox(){
 
-        boxRef.current.classList.remove("fade")
-        
-        setTimeout(() => {
+      postCounter.current = postCounter.current + 1
 
-            boxRef.current.classList.add("fade")
-            
-        }, 1000);
+      boxRef.current.classList.remove("fade")
+      
+      setTimeout(() => {
+
+          boxRef.current.classList.add("fade")
+          
+      }, 1000);
     }    
-  console.log(props.postArray[2]?.data?.preview?.images[0])
+console.log(props.postArray[2]?.data?.preview?.images[0]?.source.url.replaceAll("amp;",""))
   return (
     <div className='numberGameContainer'>
       <box className="box" ref={boxRef}>        
-        <img src={props.postArray[2]?.data?.preview?.images[0]?.source.url.replaceAll("amp;","")}></img>
+        <img src={props.postArray[postCounter.current]?.data?.preview?.images[0]?.source.url.replaceAll("amp;","")}></img>
       </box>
       {started ?       
         <div className=''>

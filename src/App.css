@@ -133,7 +133,7 @@
   position: fixed;
   margin: auto;
   top: 30px;
-  left: calc(50% - 200px);  
+  left: calc(50% - 200px);    
 }
 .box img{
   height: 100%;
@@ -143,6 +143,6 @@
 }
 @keyframes fadeInAndOut{
   0% {opacity: 0}
-  20% {opacity: 1}  
+  10% {opacity: 1}  
   100% {opacity: 0}
 }

@@ -31,16 +31,17 @@
   width: 100px;
   height: 40px;
   outline: none;
-  border: none;
-  background-color: rgb(253, 207, 0);
+  border: none;  
   border-radius: 3px;
   color: rgb(0, 0, 0);
   font-weight: bold;
   font-size: 16px;
   cursor: pointer;
+  background-image: linear-gradient(rgb(253, 207, 0), rgb(185, 151, 0));
+  box-shadow: 0 3px 10px black;
 }
-.startButtonContainer button:hover{
-  background-color: rgb(255, 230, 117);
+.startButtonContainer button:hover{  
+  background-image: linear-gradient(rgb(255, 230, 117), rgb(253, 207, 0));
   box-shadow: 0 0 20px rgb(253, 207, 0);
 }
 .numberGameContainer{  
@@ -49,8 +50,10 @@
   position: fixed;
   z-index: 10;
   margin-left: calc(50vw - 300px);;  
-  margin-top: calc(50vh - 250px);
-  background-color: rgb(61, 49, 65);
+  margin-top: calc(50vh - 250px);  
+  background-image: linear-gradient(rgb(74, 58, 80), rgb(51, 41, 54));
+  border: 1px solid rgba(65, 24, 90, 0.589);
+  box-shadow: 0 0 20px rgba(179, 127, 179, 0.685);
   border-radius: 5px;  
   display: flex;
   align-items: center;
@@ -74,7 +77,7 @@
 }
 .resultsArea{
   position: absolute;
-  bottom: 0px;
+  bottom: 10px;
   width: 100%;
   text-align: center;
   left: 0;
@@ -85,6 +88,7 @@
   padding-top: 5px;
   padding-bottom: 5px;
   margin: 5px;
+  border-radius: 4px;
 }
 .correct{
   border: 1px solid green;
@@ -149,4 +153,50 @@
   0% {opacity: 0}
   10% {opacity: 0.8}  
   100% {opacity: 0}
+}
+.settings{
+  height: 400px;
+  width: 800px;
+  background-color: rgb(66, 66, 66);
+  position: absolute;
+  top: calc(50vh - 200px);
+  left: calc(50vw - 400px);
+  z-index: 20;
+  border-radius: 5px;  
+}
+.closeButton{
+  background-color: rgb(194, 127, 127);
+  color: white;
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border-radius: 2px;
+  cursor: pointer;
+  user-select: none;
+}
+.closeButton:hover{
+  background-color: rgb(241, 194, 194);
+  box-shadow: 0 0 10px rgb(194, 127, 127);
+}
+.settingsIcon{
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  user-select: none;
+  cursor: pointer;
+}
+.settingsButton{
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  background-color: rgb(102, 96, 105);
+  box-shadow: 0 0 10px rgba(39, 39, 39, 0.5);
+  margin: 20px;
+  border-radius: 3px;
+}
+.buttonActivated{
+  box-shadow: 0 0 10px gold;
+  background-color: rgb(192, 180, 197);
 }

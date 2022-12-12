@@ -124,6 +124,9 @@ function NumbersGame(props) {
     // Removes the class with the animation then re adds it
     function showBox(){
       
+      if(!boxRef.current)
+        return
+        
       // Remove the class with the animation
       boxRef.current.classList.remove("fade")
       
@@ -141,10 +144,10 @@ function NumbersGame(props) {
   
   return (
     <div className='numberGameContainer'>
-      <box className="box" ref={boxRef}>        
+      {props.showImages && <box className="box" ref={boxRef}>        
         <img src={props.postArray[postCounter.current]?.data?.preview?.images[0]?.source.url.replaceAll("amp;","")}></img>
         {/* <img src={props.postArray[postCounter.current]?.data?.thumbnail}></img> */}
-      </box>
+      </box>}
       {started ?       
         <div className=''>
           <div className='hintIcon'>

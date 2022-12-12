@@ -2,10 +2,14 @@ import logo from './logo.svg';
 import './App.css';
 import NumbersGame from './Pages/NumbersGame';
 import { useEffect, useRef, useState } from 'react';
+import Settings from './Pages/Settings';
 
 function App() {
   
   const [postArray, setPostArray]= useState([])  
+  const [showSettings, setShowSettings] = useState()
+
+  const [showImages, setShowImages] = useState()
   const isFist = useRef(true)
 
   useEffect(()=>{
@@ -29,7 +33,11 @@ function App() {
 
   return (
     <div className="App">
-      <NumbersGame postArray={postArray} fetchData={fetchData}></NumbersGame>
+      <NumbersGame postArray={postArray} fetchData={fetchData} showImages={showImages}></NumbersGame>
+      {showSettings &&
+        <Settings setShowSettings={setShowSettings} showImages={showImages} setShowImages={setShowImages}></Settings> 
+      }
+      <div className='settingsIcon' onClick={()=>setShowSettings(true)}>Settings</div>
     </div>
   );
 }

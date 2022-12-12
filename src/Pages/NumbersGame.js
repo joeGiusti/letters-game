@@ -17,7 +17,7 @@ function NumbersGame(props) {
     
     // could have noun action place for each one
     const wordMap = {
-        0: "hero h",
+        0: "hero 0",
         1: "apron a",
         2: "boots 2",
         3: "coffee c",
@@ -40,7 +40,7 @@ function NumbersGame(props) {
         k: "kitchen 11",
         l: "lshelf 12",
         m: "marine 13",
-        n: "nicotine 14",
+        n: "nonpine 14",
         o: "overseen 15",
         p: "protein 16",
         q: "queen 17",
@@ -124,9 +124,10 @@ function NumbersGame(props) {
     // Removes the class with the animation then re adds it
     function showBox(){
       
+      // If the images are not being shown (set in settings) there will be no current to the ref
       if(!boxRef.current)
         return
-        
+
       // Remove the class with the animation
       boxRef.current.classList.remove("fade")
       

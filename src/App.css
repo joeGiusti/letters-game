@@ -5,10 +5,7 @@
   animation: backgroundColorAnimation 10s infinite;
   text-align: center;  
   height: 100vh;  
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  box-sizing: border-box;    
 }
 @keyframes backgroundColorAnimation {
   00%{ background-color: purple;}
@@ -49,32 +46,35 @@
 .numberGameContainer{  
   width: 600px;
   height: 300px;
+  position: fixed;
+  z-index: 10;
+  margin-left: calc(50% - 300px);;  
+  margin-top: calc(50% - 250px);
   background-color: rgb(61, 49, 65);
-  position: relative;
-  border-radius: 5px;
-  height: 400px;
-  width: 600px;
+  border-radius: 5px;  
   display: flex;
   align-items: center;
   justify-content: center;  
+  
 }
 .characterContainer{
   color: white;
   font-size: 20px;
   font-weight: bold;
   padding: 0 20px 40px 20px;
+  margin-top: -20px;
 }
 .numberGameContainer input{
   width: 200px;
   height: 40px;
-  background-color: gray;
+  background-color: rgba(128, 128, 128, 0.5);
   padding: 0 10px;
   border: none;
   outline: none;
 }
 .resultsArea{
   position: absolute;
-  bottom: 40px;
+  bottom: 0px;
   width: 100%;
   text-align: center;
   left: 0;
@@ -130,19 +130,23 @@
   opacity: 0;
   height: 350px;  
   width: 400px;
-  position: fixed;
+  position: absolute;
   margin: auto;
-  top: 30px;
-  left: calc(50% - 200px);      
+  left: calc(50% - 200px);   
+  z-index: -1;     
 }
 .box img{
   height: 100%;
+  z-index: inherit;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(93, 60, 109, 0.938);  
+  -webkit-mask-image: radial-gradient(rgb(0, 128, 0), rgba(0, 128, 0, 0));
 }
 .fade{
   animation: fadeInAndOut 3s;
 }
 @keyframes fadeInAndOut{
   0% {opacity: 0}
-  10% {opacity: 1}  
+  10% {opacity: 0.8}  
   100% {opacity: 0}
 }

@@ -8,7 +8,7 @@ function App() {
   
   const [postArray, setPostArray]= useState([])  
   const [showSettings, setShowSettings] = useState()
-  const [sub, setSub] = useState("r/gonewild")
+  const [sub, setSub] = useState("r/funny")
   const [imageTime, setImageTime] = useState(3)
   const [showImages, setShowImages] = useState()
   const isFist = useRef(true)
@@ -23,7 +23,7 @@ function App() {
 
   // Fetches data from the subreddit starting after the given post id
   function fetchData(_after){
-    if(!sub)
+    if(!sub || !showImages)
       return
     fetch("https://www.reddit.com/" + sub + ".json?limit=20&after="+_after)
     .then(res => res.json())

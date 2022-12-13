@@ -3,29 +3,32 @@ import './App.css';
 import NumbersGame from './Pages/NumbersGame';
 import { useEffect, useRef, useState } from 'react';
 import Settings from './Pages/Settings';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   
   const [postArray, setPostArray]= useState([])  
   const [showSettings, setShowSettings] = useState()
-
+  const [sub, setSub] = useState("r/gonewild")
   const [showImages, setShowImages] = useState()
   const isFist = useRef(true)
 
   useEffect(()=>{
+    //console.log(sub)
     if(isFist.current){
       fetchData()
       isFist.current = false
     }
-  })
+  },[])
 
   // Fetches data from the subreddit starting after the given post id
   function fetchData(_after){
-    
-    var _sub = "r/gonewild"    
-    fetch("https://www.reddit.com/" + _sub + ".json?limit=20&after="+_after)
+    if(!sub)
+      return
+    fetch("https://www.reddit.com/" + sub + ".json?limit=20&after="+_after)
     .then(res => res.json())
     .then(res2 => {
+      console.log(res2.data.children)
       setPostArray(res2.data.children)
     })
 
@@ -33,9 +36,37 @@ function App() {
 
   return (
     <div className="App">
-      <NumbersGame postArray={postArray} fetchData={fetchData} showImages={showImages}></NumbersGame>
+      <Routes>
+      <Route 
+          path='/' 
+          element={
+            <NumbersGame 
+              postArray={postArray}   
+              fetchData={fetchData} 
+              showImages={showImages}>
+            </NumbersGame>}>
+        </Route>
+        <Route 
+          path='/letters-game' 
+          element={
+            <NumbersGame 
+              postArray={postArray}   
+              fetchData={fetchData} 
+              showImages={showImages}>
+            </NumbersGame>}>
+        </Route>
+      </Routes>
+      
       {showSettings &&
-        <Settings setShowSettings={setShowSettings} showImages={showImages} setShowImages={setShowImages}></Settings> 
+        <Settings 
+          setShowSettings={setShowSettings} 
+          showImages={showImages} 
+          setShowImages={setShowImages}
+          sub={sub}
+          setSub={setSub}
+          fetchData={fetchData}
+        >
+        </Settings> 
       }
       <div className='settingsIcon' onClick={()=>setShowSettings(true)}>Settings</div>
     </div>

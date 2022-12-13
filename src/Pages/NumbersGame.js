@@ -140,7 +140,7 @@ function NumbersGame(props) {
       // Put the post count up after 3 seconds
       setTimeout(() => {
         postCountUp()
-      }, 2000);
+      }, 500);
     }    
   
   return (

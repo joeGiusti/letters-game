@@ -127,14 +127,17 @@ function NumbersGame(props) {
       // If the images are not being shown (set in settings) there will be no current to the ref
       if(!boxRef.current)
         return
-
-      // Remove the class with the animation
-      boxRef.current.classList.remove("fade")
+            
+      // Remove the class with the animation so it will replay when it is re-added
+      boxRef.current.style.animation = "null"
+      //boxRef.current.classList.remove("fade")
       
       // Add the class back on so the animation plays after a brief pause
       setTimeout(() => {
-        // Readd the class with the animatio so it plays again
-          boxRef.current.classList.add("fade")          
+        
+          //boxRef.current.classList.add("fade")    
+          boxRef.current.style.animation = `fadeInAndOut ${props.imageTime}s`
+
       }, 50);
 
       // Put the post count up after 3 seconds

@@ -196,6 +196,16 @@
   margin: 20px;
   border-radius: 3px;
 }
+.settings input{
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  background-color: rgb(157, 143, 163);
+  box-shadow: 0 0 10px rgba(39, 39, 39, 0.5);
+  margin: 20px;
+  border-radius: 3px;
+  text-align: center;
+}
 .buttonActivated{
   box-shadow: 0 0 10px gold;
   background-color: rgb(192, 180, 197);

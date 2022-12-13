@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import NumbersGame from './Pages/NumbersGame';
 import { useEffect, useRef, useState } from 'react';
@@ -10,6 +9,7 @@ function App() {
   const [postArray, setPostArray]= useState([])  
   const [showSettings, setShowSettings] = useState()
   const [sub, setSub] = useState("r/gonewild")
+  const [imageTime, setImageTime] = useState(3)
   const [showImages, setShowImages] = useState()
   const isFist = useRef(true)
 
@@ -43,7 +43,9 @@ function App() {
             <NumbersGame 
               postArray={postArray}   
               fetchData={fetchData} 
-              showImages={showImages}>
+              showImages={showImages}
+              imageTime={imageTime}              
+            >
             </NumbersGame>}>
         </Route>
         <Route 
@@ -52,7 +54,9 @@ function App() {
             <NumbersGame 
               postArray={postArray}   
               fetchData={fetchData} 
-              showImages={showImages}>
+              showImages={showImages}
+              imageTime={imageTime}                      
+              >
             </NumbersGame>}>
         </Route>
       </Routes>
@@ -65,6 +69,8 @@ function App() {
           sub={sub}
           setSub={setSub}
           fetchData={fetchData}
+          imageTime={imageTime}
+          setImageTime={setImageTime}
         >
         </Settings> 
       }

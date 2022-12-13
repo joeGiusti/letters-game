@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/letters-game/static/css/main.d43b171d.css",
-    "main.js": "/letters-game/static/js/main.369c8077.js",
+    "main.css": "/letters-game/static/css/main.ef749fbb.css",
+    "main.js": "/letters-game/static/js/main.72b099bb.js",
     "static/js/787.473d9e1e.chunk.js": "/letters-game/static/js/787.473d9e1e.chunk.js",
     "index.html": "/letters-game/index.html",
-    "main.d43b171d.css.map": "/letters-game/static/css/main.d43b171d.css.map",
-    "main.369c8077.js.map": "/letters-game/static/js/main.369c8077.js.map",
+    "main.ef749fbb.css.map": "/letters-game/static/css/main.ef749fbb.css.map",
+    "main.72b099bb.js.map": "/letters-game/static/js/main.72b099bb.js.map",
     "787.473d9e1e.chunk.js.map": "/letters-game/static/js/787.473d9e1e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d43b171d.css",
-    "static/js/main.369c8077.js"
+    "static/css/main.ef749fbb.css",
+    "static/js/main.72b099bb.js"
   ]
 }

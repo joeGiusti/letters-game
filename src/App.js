@@ -11,6 +11,8 @@ function App() {
   const [sub, setSub] = useState("r/funny")
   const [imageTime, setImageTime] = useState(3)
   const [showImages, setShowImages] = useState()
+  const [gameType, setGameType] = useState("characters")
+
   const isFist = useRef(true)
 
   useEffect(()=>{
@@ -25,7 +27,7 @@ function App() {
   function fetchData(_after){
     if(!sub || !showImages)
       return
-    fetch("https://www.reddit.com/" + sub + ".json?limit=20&after="+_after)
+    fetch("https://www.reddit.com/" + sub + ".json?limit=20&after="+_after+"&sort=top&t=week")
     .then(res => res.json())
     .then(res2 => {
       console.log(res2.data.children)
@@ -44,7 +46,8 @@ function App() {
               postArray={postArray}   
               fetchData={fetchData} 
               showImages={showImages}
-              imageTime={imageTime}              
+              imageTime={imageTime}  
+              gameType={gameType}               
             >
             </NumbersGame>}>
         </Route>
@@ -55,7 +58,8 @@ function App() {
               postArray={postArray}   
               fetchData={fetchData} 
               showImages={showImages}
-              imageTime={imageTime}                      
+              imageTime={imageTime}  
+              gameType={gameType}                    
               >
             </NumbersGame>}>
         </Route>
@@ -71,6 +75,8 @@ function App() {
           fetchData={fetchData}
           imageTime={imageTime}
           setImageTime={setImageTime}
+          setGameType={setGameType}
+          gameType={gameType}                    
         >
         </Settings> 
       }
